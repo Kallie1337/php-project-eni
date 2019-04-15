@@ -35,6 +35,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $username;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -116,5 +121,12 @@ class User implements UserInterface
     // constructeur mettant un rôle USER par défaut
     public  function __construct(){
         $this->roles[] = 'ROLE_USER';
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 }
