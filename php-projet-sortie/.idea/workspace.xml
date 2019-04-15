@@ -126,10 +126,10 @@
       <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="2" />
-    <option name="width" value="1300" />
-    <option name="height" value="944" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="y" value="108" />
+    <option name="width" value="1280" />
+    <option name="height" value="916" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
