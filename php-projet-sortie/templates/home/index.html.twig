@@ -3,6 +3,52 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<span>HOME</span>
+    <div class="row">
+        {% for trip in trips %}
+            <div class="col col-md-6">
+
+                <div class="card trip-card">
+                    <div class="card-body">
+                        <div class="left mr-4">
+                            <img class="img-thumbnail" src="https://picsum.photos/128/128/?id=400&blur">
+                        </div>
+                        <div class="right">
+                            <span class="fas fa-torii-gate fa-lg mr-2"></span>
+                        <span class="title">{{ trip.name }}</span>
+                            <div class="details mb-4">
+                                <span ><span class="fas fa-calendar-alt mr-2"></span>{{ trip.beginDateTime|date('d-m-Y') }}</span>
+                                <span><span class="fas fa-users mr-2"></span> 0 / {{ trip.maxRegistration }}</span>
+                            </div>
+                            <span><span class="fas fa-pencil-alt mr-2"></span> {{ trip.infos }}</span>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="left">
+                            <img class="img-thumbnail" src="https://picsum.photos/16/16/?id=400&blur">
+                        </div>
+                        <div class="right">
+                            <span class="fas fa-scroll mr-2"></span>
+                            <a href="#">Detail</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

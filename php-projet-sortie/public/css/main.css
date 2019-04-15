@@ -4,3 +4,28 @@
 .account{
     padding-top: 5%;
 }
+
+.trip-card > .card-body {
+    display: flex;
+}
+
+.trip-card > .card-body > .right{
+    flex: 1;
+}
+
+.trip-card > .card-body > .right > .title{
+    font-size: x-large;
+    font-weight: normal;
+}
+
+.trip-card > .card-body > .right > .details{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.trip-card > .card-footer{
+    display: flex;
+    justify-content: space-between;
+
+}
