@@ -112,4 +112,9 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    // constructeur mettant un rôle USER par défaut
+    public  function __construct(){
+        $this->roles[] = 'ROLE_USER';
+    }
 }
