@@ -28,7 +28,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/login", name="login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -41,7 +41,7 @@ class AccountController extends Controller
     }
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/register", name="register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, Authenticator $authenticator): Response
     {
@@ -83,7 +83,7 @@ class AccountController extends Controller
     public function logout(){
         session_destroy();
         session_abort();
-        $this->redirectToRoute('home');
+       return $this->redirectToRoute('home');
     }
 
     /**
@@ -100,7 +100,8 @@ class AccountController extends Controller
 
             return $this->redirectToRoute('home');
         }
+        $form = $form->createView();
         return $this->render('account/user.html.twig',
-            compact('form'));
+            compact('form', 'user'));
     }
 }

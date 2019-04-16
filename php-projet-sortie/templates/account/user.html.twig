@@ -3,7 +3,12 @@
 {% block body %}
     <div class="row">
         {{ form_start(form) }}
-        {{ form_row(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.first_name) }}
+        {{ form_row(form.last_name) }}
+        {{ form_row(form.phone) }}
+        <input type="submit" class="btn btn-secondary" value="Send">
         {{ form_end(form) }}
     </div>
 {% endblock %}
