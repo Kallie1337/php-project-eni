@@ -17,7 +17,7 @@
                         <span class="title">{{ trip.name }}</span>
                             <div class="details mb-4">
                                 <span ><span class="fas fa-calendar-alt mr-2"></span>{{ trip.beginDateTime|date('d-m-Y') }}</span>
-                                <span><span class="fas fa-users mr-2"></span> 0 / {{ trip.maxRegistration }}</span>
+                                <span><span class="fas fa-users mr-2"></span> {{ trip.currentRegistration }} / {{ trip.maxRegistration }}</span>
                             </div>
                             <span><span class="fas fa-pencil-alt mr-2"></span> {{ trip.infos }}</span>
                         </div>

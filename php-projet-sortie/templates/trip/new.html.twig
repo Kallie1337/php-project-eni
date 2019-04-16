@@ -3,9 +3,33 @@
 {% block title %}New Trip{% endblock %}
 
 {% block body %}
-    <h1>Create new Trip</h1>
+    <div class="row">
+        <div class="col col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <span>Créer une sortie</span>
+                    <span><i class="fas fa-plus"></i></span>
 
-    {{ include('trip/_form.html.twig') }}
+                </div>
+                <div class="card-body">
+                    {{ include('trip/_form.html.twig') }}
+                    <a href="{{ path('trip_index') }}">back to list</a>
+                </div>
 
-    <a href="{{ path('trip_index') }}">back to list</a>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
 {% endblock %}

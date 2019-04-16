@@ -14,7 +14,7 @@ class TripType extends AbstractType
         $builder
             ->add('name')
             ->add('beginDateTime')
-            ->add('duration')
+            ->add('endDateTime')
             ->add('registrationEndDate')
             ->add('maxRegistration')
             ->add('infos')

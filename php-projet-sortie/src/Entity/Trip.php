@@ -26,10 +26,7 @@ class Trip
      */
     private $beginDateTime;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $duration;
+
 
     /**
      * @ORM\Column(type="datetime")
@@ -45,6 +42,16 @@ class Trip
      * @ORM\Column(type="string", length=255)
      */
     private $infos;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $currentRegistration;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $endDateTime;
 
     public function getId(): ?int
     {
@@ -75,17 +82,6 @@ class Trip
         return $this;
     }
 
-    public function getDuration(): ?string
-    {
-        return $this->duration;
-    }
-
-    public function setDuration(string $duration): self
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
 
     public function getRegistrationEndDate(): ?\DateTimeInterface
     {
@@ -119,6 +115,30 @@ class Trip
     public function setInfos(string $infos): self
     {
         $this->infos = $infos;
+
+        return $this;
+    }
+
+    public function getCurrentRegistration(): ?int
+    {
+        return $this->currentRegistration;
+    }
+
+    public function setCurrentRegistration(int $currentRegistration): self
+    {
+        $this->currentRegistration = $currentRegistration;
+
+        return $this;
+    }
+
+    public function getEndDateTime(): ?\DateTimeInterface
+    {
+        return $this->endDateTime;
+    }
+
+    public function setEndDateTime(\DateTimeInterface $endDateTime): self
+    {
+        $this->endDateTime = $endDateTime;
 
         return $this;
     }

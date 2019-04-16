@@ -1,4 +1,31 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<form method="POST">
+
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            {{ form_label (form.name, ('Nom de la Sortie')) }}
+            {{ form_widget (form.name,{'attr': {'class':'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-4">
+            {{ form_label (form.maxRegistration, ('Nombre de Places')) }}
+            {{ form_widget (form.maxRegistration,{'attr': {'class':'form-control'}}) }}
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            {{ form_label (form.beginDateTime, ('Date Depart')) }}
+            {{ form_widget (form.beginDateTime,{'attr': {'class':'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-4">
+            {{ form_label (form.endDateTime, ('Date de Fin')) }}
+            {{ form_widget (form.endDateTime,{'attr': {'class':'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-4">
+            {{ form_label (form.registrationEndDate, ('Date Limite d\'Inscription')) }}
+            {{ form_widget (form.registrationEndDate,{'attr': {'class':'form-control'}}) }}
+        </div>
+
+    </div>
+
+</form>
