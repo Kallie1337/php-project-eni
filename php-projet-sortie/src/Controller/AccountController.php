@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Form\UserFormType;
+use App\Repository\UserRepository;
 use App\Security\Authenticator;
+use Doctrine\ORM\Repository\RepositoryFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -89,16 +91,34 @@ class AccountController extends Controller
     /**
      * @Route("/user", name="user")
      */
-    public function user(Request $request,EntityManagerInterface $entityManager){
-        $us = $entityManager->getRepository(User::class);
+    public function user(UserPasswordEncoderInterface $passwordEncoder,Request $request,EntityManagerInterface $entityManager, UserRepository $us){
         $u = $this->getUser()->getId();
         $user = $us->find($u);
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('home');
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                ));
+            $username = $form->get('username')->getData();
+            $check = $us->findOneBy(['username' => $username]);
+            if ($check == null) {
+                $entityManager->flush();
+                return $this->redirectToRoute('home');
+            } else {
+                if ($check->getId() != $u) {
+                    $this->addFlash('error', 'This username is already used');
+                    $form = $this->createForm(UserFormType::class, $user);
+                    $form->handleRequest($request);
+                    $form = $form->createView();
+                    return $this->render('account/user.html.twig', compact('form'));
+                } else {
+                    $entityManager->flush();
+                    return $this->redirectToRoute('home');
+                }
+            }
         }
         $form = $form->createView();
         return $this->render('account/user.html.twig',
