@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\UserFormType;
 use App\Security\Authenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Doctrine\ORM\EntityManagerInterface;
 
 class AccountController extends Controller
 {
@@ -81,6 +83,24 @@ class AccountController extends Controller
     public function logout(){
         session_destroy();
         session_abort();
-        $this->redirectToRoute('/');
+        $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/user", name="user")
+     */
+    public function user(Request $request,EntityManagerInterface $entityManager){
+        $us = $entityManager->getRepository(User::class);
+        $u = $this->getUser()->getId();
+        $user = $us->find($u);
+        $form = $this->createForm(UserFormType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('account/user.html.twig',
+            compact('form'));
     }
 }
