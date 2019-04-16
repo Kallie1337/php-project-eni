@@ -24,7 +24,7 @@
                 <td>{{ trip.id }}</td>
                 <td>{{ trip.name }}</td>
                 <td>{{ trip.beginDateTime ? trip.beginDateTime|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ trip.endDateTime }}</td>
+                <td>{{ trip.endDateTime|date('Y-m-d H:i:s')}}</td>
                 <td>{{ trip.registrationEndDate ? trip.registrationEndDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ trip.maxRegistration }}</td>
                 <td>{{ trip.infos }}</td>

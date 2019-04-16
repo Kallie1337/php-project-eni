@@ -23,7 +23,6 @@ class TripType extends AbstractType
             ->add('endDateTime')
             ->add('registrationEndDate')
             ->add('maxRegistration')
-            ->add('currentRegistration')
             ->add('infos', TextareaType::class);
     }
 

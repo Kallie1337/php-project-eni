@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>EndDatetime</th>
-                <td>{{ trip.enddateTime }}</td>
+                <td>{{ trip.enddateTime|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
                 <th>RegistrationEndDate</th>

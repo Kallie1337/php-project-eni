@@ -36,6 +36,9 @@ class TripController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $trip->setCurrentRegistration(0);
+
             $entityManager->persist($trip);
             $entityManager->flush();
 
