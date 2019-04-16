@@ -33,3 +33,19 @@
 .error{
     color:red;
 }
+
+
+#trip_beginDateTime{
+    display: flex;
+    justify-content: space-between;
+}
+
+#trip_endDateTime{
+    display: flex;
+    justify-content: space-between;
+}
+#trip_registrationEndDate{
+    display: flex;
+    justify-content: space-between;
+
+}
