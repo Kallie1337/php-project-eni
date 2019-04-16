@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div id="div_top_login" class="offset-md-4 col-md-4">
+        <div id="div_others">
+            <p><span class="bold">Username : </span>{{ u.username }}</p>
+
+            <p><span class="bold">Email : </span>{{ u.email }}</p>
+
+            <p><span class="bold">First name : </span>{{ u.firstname }}</p>
+
+            <p><span class="bold">Last name : </span>{{ u.lastname }}</p>
+
+            <p><span class="bold"> Phone : </span>0{{ u.phone }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

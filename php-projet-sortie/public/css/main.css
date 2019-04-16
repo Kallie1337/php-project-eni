@@ -49,3 +49,11 @@
     justify-content: space-between;
 
 }
+
+.bold{
+    font-weight: bold;
+}
+#div_others{
+    border-style: solid;
+    padding: 10%5%10%20%;
+}
