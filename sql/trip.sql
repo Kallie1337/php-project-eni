@@ -1,11 +1,4 @@
-INSERT INTO `trip`(`name`, `begin_date_time`, `registration_end_date`,`current_registration` `max_registration`, `infos`) VALUES ('New York City', '2019/04/17', '2019/04/18','0', '15', 'Une sortie à New York City'); 
-
-INSERT INTO `trip`(`name`, `begin_date_time`, `registration_end_date`,`current_registration` `max_registration`, `infos`) VALUES ('Los Angeles', '2019/04/17', '2019/04/18','0', '15', 'Une sortie à Los Angeles');  
-
-INSERT INTO `trip`(`name`, `begin_date_time`, `registration_end_date`,`current_registration` `max_registration`, `infos`) VALUES ('Chicago', '2019/04/17', '2019/04/18','0', '15', 'Une sortie à Chicago');  
-
-INSERT INTO `trip`(`name`, `begin_date_time`, `registration_end_date`,`current_registration` `max_registration`, `infos`) VALUES ('Houston', '2019/04/17', '2019/04/18','0', '15', 'Une sortie à Houston');  
-
-INSERT INTO `trip`(`name`, `begin_date_time`, `registration_end_date`,`current_registration` `max_registration`, `infos`) VALUES ('Phoenix', '2019/04/17', '2019/04/18','0', '15', 'Une sortie à Phoenix');  
-
-INSERT INTO `trip`(`name`, `begin_date_time`, `registration_end_date`,`current_registration` `max_registration`, `infos`) VALUES ('San Francisco', '2019/04/17', '2019/04/18','0', '15', 'Une sortie à San Francisco');
+INSERT INTO `trip`(`name`, `begin_date_time`,`end_date_time` , `registration_end_date`,`current_registration` ,`max_registration`, `infos`) VALUES ('New York City', '2019/04/17', '2019/04/18','2019/04/25','0', '15', 'Une sortie à New York City') ;
+INSERT INTO `trip`(`name`, `begin_date_time`,`end_date_time` , `registration_end_date`,`current_registration` ,`max_registration`, `infos`) VALUES ('Chicago', '2019/05/17', '2019/05/18','2019/05/25','0', '15', 'Visite des grands lacs') ;
+INSERT INTO `trip`(`name`, `begin_date_time`,`end_date_time` , `registration_end_date`,`current_registration` ,`max_registration`, `infos`) VALUES ('Tokyo', '2019/06/25', '2019/06/26','2019/07/02','0', '15', 'Cerisiers en fleurs au pays du soleil levant') ;
+INSERT INTO `trip`(`name`, `begin_date_time`,`end_date_time` , `registration_end_date`,`current_registration` ,`max_registration`, `infos`) VALUES ('Moscou', '2019/03/17', '2019/03/18','2019/03/28','0', '15', 'Visite du Kremlin') ;
