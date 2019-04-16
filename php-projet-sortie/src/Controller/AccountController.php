@@ -17,10 +17,13 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @Route("/account")
+ */
 class AccountController extends Controller
 {
     /**
-     * @Route("/account", name="account")
+     * @Route("/", name="account")
      */
     public function index()
     {
