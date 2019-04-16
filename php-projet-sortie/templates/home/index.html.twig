@@ -4,6 +4,73 @@
 
 {% block body %}
     <div class="row">
+        <div class="col col-md-12 mb-4">
+
+
+            <div class="card">
+
+                <form>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-7">
+                                <label for="exampleFormControlFile1">Recherche sortie</label>
+                                <input type="text" class="form-control" placeholder="Recherche">
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlFile1">Date de début</label>
+                                <input type="date" class="form-control" placeholder="Recherche" value="">
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlFile1">Date de fin</label>
+                                <input type="date" class="form-control" placeholder="Recherche">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-row d-flex align-items-center">
+                            <div class="col">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Mes sorties</label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Inscrit</label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Non inscrit</label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Passées</label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <button type="submit" class="form-control"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="row">
         {% for trip in trips %}
             <div class="col col-md-6">
 
@@ -41,7 +108,19 @@
 
     </div>
 
-
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
 
 
