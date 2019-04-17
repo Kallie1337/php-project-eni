@@ -87,5 +87,14 @@ class AccountController extends Controller
        return $this->redirectToRoute('home');
     }
 
+    /**
+     * @Route("/forgetPassword", name="forgetPassword")
+     */
+    public function forgetPassword()
+    {
+
+        return $this->render('account/forgetPassword.html.twig');
+
+    }
 
 }
