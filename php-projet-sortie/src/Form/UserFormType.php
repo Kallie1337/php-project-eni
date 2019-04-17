@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,6 +27,7 @@ class UserFormType extends AbstractType
                'max' => 4096,
            ])
         ]])
+       ->add('image', FileType::class, ['label' => 'Photo\'s profile', 'required' => false ])
        ->add('first_name', TextType::class)
        ->add('last_name', TextType::class)
        ->add('phone', NumberType::class)

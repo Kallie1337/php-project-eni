@@ -2,7 +2,10 @@
 
 {% block body %}
     <div class="row">
-        <div id="div_top_login" class="offset-md-2 col-md-9">
+        <div >
+            <img id="img_user" src="{{ asset('uploads/brochures/' ~ imgPath) }}"/>
+        </div>
+        <div class="offset-md-2 col-md-9">
             <h1>User</h1>
             {% for messages in app.flashes('error') %}
                 <div class="error offset-lg-4">{{ messages }}</div>
@@ -32,6 +35,7 @@
                     {{ form_row(form.password, {'attr' : {'class' : 'form-control'}}) }}
                 </div>
             </div>
+            {{ form_row(form.image) }}
             <div class="account offset-md-5">
                 <input type="submit" class="btn btn-secondary" value="Send">
             </div>

@@ -7,6 +7,7 @@ use App\Form\UserFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -23,6 +24,11 @@ class UserController extends Controller
     public function user(UserPasswordEncoderInterface $passwordEncoder,Request $request,EntityManagerInterface $entityManager, UserRepository $us){
         $u = $this->getUser()->getId();
         $user = $us->find($u);
+        //Save du path de l'image
+        $imgPath = $user->getImage();
+        //Reset img
+        $user->setImage(null);
+
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -31,6 +37,18 @@ class UserController extends Controller
                     $user,
                     $form->get('password')->getData()
                 ));
+            /** @var UploadedFile $file*/
+            $file = $user->getImage();
+            if($file == null){
+                $user->setImage($imgPath);
+            }else{
+                $fileName = md5(uniqid()) . ' . '.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('brochures_directory'),
+                    $fileName
+                );
+                $user->setImage($fileName);
+            }
             $username = $form->get('username')->getData();
             $check = $us->findOneBy(['username' => $username]);
             if ($check == null) {
@@ -51,7 +69,7 @@ class UserController extends Controller
         }
         $form = $form->createView();
         return $this->render('account/user.html.twig',
-            compact('form'));
+            compact('form', 'user','imgPath'));
     }
 
     /**
