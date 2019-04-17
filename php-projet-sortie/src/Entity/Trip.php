@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +54,14 @@ class Trip
      * @ORM\Column(type="datetime")
      */
     private $endDateTime;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="trips")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+
 
     public function getId(): ?int
     {
@@ -142,4 +152,17 @@ class Trip
 
         return $this;
     }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
 }

@@ -38,6 +38,7 @@ class TripController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
 
             $trip->setCurrentRegistration(0);
+            $trip->setAuthor($this->getUser());
 
             $entityManager->persist($trip);
             $entityManager->flush();
