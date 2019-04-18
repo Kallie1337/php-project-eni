@@ -47,4 +47,17 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return User[] Returns an array of User objects
+     */
+    public function selectNonAdmin(){
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.administrateur = :val')
+            ->setParameter('val', false)
+            ->orderBy('u.username', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

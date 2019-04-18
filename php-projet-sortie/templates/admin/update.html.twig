@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <h1 class="offset-md-5">Users list</h1>
+
+        <table class="table table-light">
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone</th>
+                <th>Action</th>
+                <th>Activity</th>
+            </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                {% if(user.phone != null) %}
+                    <td>0{{ user.phone }}</td>
+                {% else %}
+                    <td>{{ user.phone }}</td>
+                {% endif %}
+                {% for role in user.roles %}
+                    {% if(role == "ROLE_USER") %}
+                        <td>
+                            <a href="{{ path('delete', {'id': user.id}) }}">
+                                <button class="fa fa-trash" onclick="return confirm('Are you sure to delete {{ user.username }} ?')"></button>
+                            </a>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+                {% if(user.active == 1) %}
+                    <td>
+                        <a href="{{ path('unactive', {'id': user.id}) }}">
+                            <button class="fa fa-check"></button>
+                        </a>
+                    </td>
+                {% else %}
+                    <td>
+                        <a href="{{ path('active', {'id': user.id}) }}">
+                            <button class="fa fa-ban"></button>
+                        </a>
+                    </td>
+                {% endif %}
+               </tr>
+
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

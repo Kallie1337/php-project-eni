@@ -145,6 +145,8 @@ class User implements UserInterface
 
     // constructeur mettant un rôle USER par défaut
     public  function __construct(){
+        $this->setActive(true);
+        $this->setAdmin(false);
         $this->roles[] = 'ROLE_USER';
         $this->trips = new ArrayCollection();
     }
@@ -241,4 +243,31 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $administrateur;
+
+    public function getAdmin(){
+        return $this->administrateur;
+    }
+
+    public function setAdmin($administrateur){
+        $this->administrateur = $administrateur;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    public function getActive(){
+        return $this->active;
+    }
+
+    public function setActive($active){
+        $this->active = $active;
+        return $this;
+    }
 }
