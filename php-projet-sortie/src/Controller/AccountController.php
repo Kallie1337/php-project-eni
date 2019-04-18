@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\PasswordFormType;
 use App\Security\Authenticator;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,11 +92,34 @@ class AccountController extends Controller
     /**
      * @Route("/forgetPassword", name="forgetPassword")
      */
-    public function forgetPassword()
+    public function forgetPassword(UserPasswordEncoderInterface $passwordEncoder,Request $request,EntityManagerInterface $entityManager)
     {
 
-        return $this->render('account/forgetPassword.html.twig');
 
+        $form = $this->createForm(PasswordFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $email = $form->get('email')->getData();
+            $check = $form->get('password')->getData();
+            $user = $entityManager
+                ->getRepository(User::class)
+                ->findOneBy(['email' => $email]);
+            if($user != null && $check == 1234)
+            {
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    ));
+                $entityManager->persist($user);
+                $entityManager->flush();
+                return $this->redirectToRoute('home');
+            }
+        }
+
+        return $this->render('account/forgetPassword.html.twig',
+            ['passwordForm' => $form->createView()]);
     }
 
 }
