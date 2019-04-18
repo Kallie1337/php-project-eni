@@ -35,7 +35,11 @@
                     {{ form_row(form.password, {'attr' : {'class' : 'form-control'}}) }}
                 </div>
             </div>
-            {{ form_row(form.image) }}
+            <div class="row">
+                <div class="col-md-5">
+                    {{ form_row(form.image, {'attr' : {'class' : 'form-control'}}) }}
+                </div>
+            </div>
             <div class="account offset-md-5">
                 <input type="submit" class="btn btn-secondary" value="Send">
             </div>

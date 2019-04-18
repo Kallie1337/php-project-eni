@@ -27,7 +27,7 @@ class UserFormType extends AbstractType
                'max' => 4096,
            ])
         ]])
-       ->add('image', FileType::class, ['label' => 'Photo\'s profile', 'required' => false ])
+       ->add('image', FileType::class, ['required' => false ])
        ->add('first_name', TextType::class)
        ->add('last_name', TextType::class)
        ->add('phone', NumberType::class)
