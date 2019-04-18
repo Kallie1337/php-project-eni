@@ -94,25 +94,24 @@ class AccountController extends Controller
      */
     public function forgetPassword(UserPasswordEncoderInterface $passwordEncoder,Request $request,EntityManagerInterface $entityManager)
     {
+        $user = new User();
 
-
-        $form = $this->createForm(PasswordFormType::class);
+        $form = $this->createForm(PasswordFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $email = $form->get('email')->getData();
+            $email = $user->getEmail();
             $check = $form->get('password')->getData();
-            $user = $entityManager
+            $u = $entityManager
                 ->getRepository(User::class)
                 ->findOneBy(['email' => $email]);
-            if($user != null && $check == 1234)
+            if($u != null && $check == 1234)
             {
                 $user->setPassword(
                     $passwordEncoder->encodePassword(
                         $user,
                         $form->get('plainPassword')->getData()
                     ));
-                $entityManager->persist($user);
                 $entityManager->flush();
                 return $this->redirectToRoute('home');
             }
