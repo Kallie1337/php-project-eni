@@ -1,9 +1,6 @@
-body {
 
-}
-.navbar   {
-    background-color: #011627!important;
-    border-bottom: solid 2px #ababab;
+nav {
+    color: white;
 }
 
 nav a > i,span {
@@ -12,7 +9,7 @@ nav a > i,span {
 }
 
 nav a:hover > i {
-    color: #ff9f1c;
+    color: lightgray;
 }
 
 form {
@@ -25,19 +22,12 @@ form {
     border: 2px solid #ababab;
 }
 
-.card-body {
-    background-color: #ebf6ff;
-}
-
 .card-body span,i {
     color: #495057;
 }
 
 
 
-.card-footer {
-    background-color: #b3c3d0;
-}
 
 #div_top_login{
     padding-top: 20%;
