@@ -1,5 +1,5 @@
 body {
- 
+
 }
 .navbar   {
     background-color: #011627!important;
@@ -120,10 +120,12 @@ form {
 
 #card-author-info i {
     margin-top: 4px;
+    color: #1d2124;
 }
 
-#card-informations i {
+#card-informations i, span {
     margin-top: 4px;
+    color: #1d2124;
 }
 #card-statusbar{
     padding: 8px 16px 8px 16px;
