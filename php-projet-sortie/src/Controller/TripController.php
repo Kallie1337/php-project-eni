@@ -161,8 +161,9 @@ class TripController extends Controller
     /**
      * @Route("/{id}/edit", name="trip_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Trip $trip): Response
+    public function edit(Request $request, Trip $trip, LocationRepository $locationRepository): Response
     {
+        $locations = $locationRepository->findAll();
         $form = $this->createForm(TripType::class, $trip);
         $form->handleRequest($request);
 
@@ -177,6 +178,7 @@ class TripController extends Controller
         return $this->render('trip/edit.html.twig', [
             'trip' => $trip,
             'form' => $form->createView(),
+            'locations' => $locations,
         ]);
     }
 

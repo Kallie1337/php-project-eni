@@ -29,7 +29,7 @@
                 {% for role in user.roles %}
                     {% if(role == "ROLE_USER") %}
                         <td>
-                            <a href="{{ path('delete', {'id': user.id}) }}">
+                            <a href="{{ path('user_delete', {'id': user.id}) }}">
                                 <button class="fa fa-trash" onclick="return confirm('Are you sure to delete {{ user.username }} ?')"></button>
                             </a>
                         </td>

@@ -154,7 +154,7 @@ class AdminController extends Controller
         $user = $userRepository->find($us);
         $entityManager->remove($user);
         $entityManager->flush();
-        return $this->redirectToRoute("update");
+        return $this->redirectToRoute("user_update");
     }
 
     /**
@@ -165,7 +165,7 @@ class AdminController extends Controller
         $user->setActive(false);
         $entityManager->persist($user);
         $entityManager->flush();
-        return $this->redirectToRoute("update");
+        return $this->redirectToRoute("user_update");
     }
 
     /**
@@ -176,6 +176,6 @@ class AdminController extends Controller
         $user->setActive(true);
         $entityManager->persist($user);
         $entityManager->flush();
-        return $this->redirectToRoute("update");
+        return $this->redirectToRoute("user_update");
     }
 }
