@@ -13,8 +13,8 @@
 <body>
 
 <!-- header -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <a class="navbar-brand" href="#">
+<nav class="navbar navbar-expand-lg navbar-light mb-5">
+    <a class="navbar-brand" href="{{ path ('home') }}">
         <i class="fas fa-island-tropical fa-lg"></i>
         <span>Sortir.com</span>
     </a>
@@ -27,19 +27,23 @@
         <ul class="navbar-nav ml-auto">
 
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path ('home') }}"><i class="fas fa-home fa-lg"></i></a>
+                <a class="nav-link" href="{{ path ('home') }}" data-toggle="tooltip"
+                   data-placement="bottom" title="Accueil"><i class="fas fa-home fa-lg"></i></a>
             </li>
 
             {% if is_granted ('IS_AUTHENTICATED_FULLY') %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('user') }}"><i class="fas fa-user fa-lg"></i></a>
+                    <a class="nav-link" href="{{ path('user') }}" data-toggle="tooltip"
+                       data-placement="bottom" title="Profil"><i class="fas fa-user fa-lg"></i></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ path ('logout') }}"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                    <a class="nav-link" href="{{ path ('logout') }} " data-toggle="tooltip"
+                       data-placement="bottom" title="Se deconnecter"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                 </li>
             {% else %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ path ('login') }}"><i class="fas fa-sign-in-alt fa-lg"></i></a>
+                    <a class="nav-link" href="{{ path ('login') }}" data-toggle="tooltip"
+                       data-placement="bottom" title="Se connecter"><i class="fas fa-sign-in-alt fa-lg"></i></a>
                 </li>
             {% endif %}
 
@@ -60,6 +64,7 @@
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/anime.min.js') }}"></script>
+    <script src="{{ asset('js/list.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 {% endblock %}
 </body>

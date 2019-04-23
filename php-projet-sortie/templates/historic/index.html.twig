@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historic index{% endblock %}
+
+{% block body %}
+    <h1>Historic index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Motivation</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for historic in historics %}
+            <tr>
+                <td>{{ historic.id }}</td>
+                <td>{{ historic.motivation }}</td>
+                <td>
+                    <a href="{{ path('historic_show', {'id': historic.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('historic_new') }}">Create new</a>
+{% endblock %}

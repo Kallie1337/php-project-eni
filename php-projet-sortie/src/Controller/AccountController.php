@@ -25,7 +25,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return $this->render('account/index.html.twig', [
+        return $this->render('account/ndex.html.twig', [
             'controller_name' => 'AccountController',
         ]);
     }
@@ -49,6 +49,7 @@ class AccountController extends Controller
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, Authenticator $authenticator): Response
     {
         $user = new User();
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historic{% endblock %}
+
+{% block body %}
+    <h1>Historic</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ historic.id }}</td>
+            </tr>
+            <tr>
+                <th>Motivation</th>
+                <td>{{ historic.motivation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('historic_index') }}">back to list</a>
+
+
+{% endblock %}

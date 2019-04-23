@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190416114925 extends AbstractMigration
+final class Version20190419082040 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,9 @@ final class Version20190416114925 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE trip ADD current_registration INT NOT NULL, ADD end_date_time DATETIME NOT NULL, DROP duration');
+        $this->addSql('ALTER TABLE trip ADD location_id INT NOT NULL');
+        $this->addSql('ALTER TABLE trip ADD CONSTRAINT FK_7656F53B64D218E FOREIGN KEY (location_id) REFERENCES location (id)');
+        $this->addSql('CREATE INDEX IDX_7656F53B64D218E ON trip (location_id)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +32,8 @@ final class Version20190416114925 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE trip ADD duration VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, DROP current_registration, DROP end_date_time');
+        $this->addSql('ALTER TABLE trip DROP FOREIGN KEY FK_7656F53B64D218E');
+        $this->addSql('DROP INDEX IDX_7656F53B64D218E ON trip');
+        $this->addSql('ALTER TABLE trip DROP location_id');
     }
 }

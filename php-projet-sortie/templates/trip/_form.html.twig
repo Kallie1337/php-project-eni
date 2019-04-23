@@ -1,11 +1,23 @@
-<form method="POST">
+<form method="POST" name="form">
 
     <div class="form-row">
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-3">
             {{ form_label (form.name, ('Nom de la Sortie')) }}
             {{ form_widget (form.name,{'attr': {'class':'form-control'}}) }}
         </div>
+        <div class="form-group col-md-3">
+            <label for="exampleFormControlSelect1">Destination</label>
+            <select class="form-control" id="decision" name="decision">
+                {% for location in locations %}
+                <option>{{ location.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div class="form-group col-md-4">
+            {{ form_label (form.hang, ('Accroche')) }}
+            {{ form_widget (form.hang,{'attr': {'class':'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-2">
             {{ form_label (form.maxRegistration, ('Nombre de Places')) }}
             {{ form_widget (form.maxRegistration,{'attr': {'class':'form-control'}}) }}
         </div>
@@ -30,17 +42,26 @@
             {{ form_widget (form.infos,{'attr': {'class':'form-control'}}) }}
         </div>
 
+        <div class="form-group col-md-12">
+            {{ form_label (form.weather, ('Météo')) }}
+            {{ form_widget (form.weather,{'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-md-12">
+            {{ form_label (form.timezone, ('Heure Locale')) }}
+            {{ form_widget (form.timezone,{'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-md-12">
+            {{ form_label (form.administration, ('Administratif')) }}
+            {{ form_widget (form.administration,{'attr': {'class':'form-control'}}) }}
+        </div>
+
     </div>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <button type="submit" class="btn btn-primary">ENREGISTRER</button>
     {{ form_end(form) }}
-
-
-
-
-
-
 
 
 </form>

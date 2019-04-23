@@ -61,6 +61,64 @@ class Trip
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $weather;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $timezone;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $administration;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TripUserLove", mappedBy="trip", cascade={"persist"})
+     */
+    private $love;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TripUserLove", mappedBy="trip", orphanRemoval=true)
+     */
+    private $tripUserLove;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $hang;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="trips")
+     */
+    private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Location", inversedBy="trips")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $location;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Historic", mappedBy="trip", cascade={"persist", "remove"})
+     */
+    private $historic;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isArchived;
+
+    public function __construct()
+    {
+        $this->love = new ArrayCollection();
+        $this->tripUserLove = new ArrayCollection();
+        $this->users = new ArrayCollection();
+    }
+
 
 
     public function getId(): ?int
@@ -164,5 +222,184 @@ class Trip
 
         return $this;
     }
+
+    public function getWeather(): ?string
+    {
+        return $this->weather;
+    }
+
+    public function setWeather(string $weather): self
+    {
+        $this->weather = $weather;
+
+        return $this;
+    }
+
+    public function getTimezone(): ?string
+    {
+        return $this->timezone;
+    }
+
+    public function setTimezone(string $timezone): self
+    {
+        $this->timezone = $timezone;
+
+        return $this;
+    }
+
+    public function getAdministration(): ?string
+    {
+        return $this->administration;
+    }
+
+    public function setAdministration(string $administration): self
+    {
+        $this->administration = $administration;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TripUserLove[]
+     */
+    public function getLove(): Collection
+    {
+        return $this->love;
+    }
+
+    public function addLove(TripUserLove $love): self
+    {
+        if (!$this->love->contains($love)) {
+            $this->love[] = $love;
+            $love->setTrip($this);
+        }
+        return $this;
+    }
+
+    public function removeLove(TripUserLove $love): self
+    {
+        if ($this->love->contains($love)) {
+            $this->love->removeElement($love);
+            // set the owning side to null (unless already changed)
+            if ($love->getTrip() === $this) {
+                $love->setTrip(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TripUserLove[]
+     */
+    public function getTripUserLove(): Collection
+    {
+        return $this->tripUserLove;
+    }
+
+    public function addTripUserLove(TripUserLove $tripUserLove): self
+    {
+        if (!$this->tripUserLove->contains($tripUserLove)) {
+            $this->tripUserLove[] = $tripUserLove;
+            $tripUserLove->setTrip($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTripUserLove(TripUserLove $tripUserLove): self
+    {
+        if ($this->tripUserLove->contains($tripUserLove)) {
+            $this->tripUserLove->removeElement($tripUserLove);
+            // set the owning side to null (unless already changed)
+            if ($tripUserLove->getTrip() === $this) {
+                $tripUserLove->setTrip(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getHang(): ?string
+    {
+        return $this->hang;
+    }
+
+    public function setHang(string $hang): self
+    {
+        $this->hang = $hang;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+               }
+
+        return $this;
+    }
+
+    public function getLocation(): ?Location
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?Location $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getHistoric(): ?Historic
+    {
+        return $this->historic;
+    }
+
+    public function setHistoric(?Historic $historic): self
+    {
+        $this->historic = $historic;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newTrip = $historic === null ? null : $this;
+        if ($newTrip !== $historic->getTrip()) {
+            $historic->setTrip($newTrip);
+        }
+
+        return $this;
+    }
+
+    public function getIsArchived(): ?bool
+    {
+        return $this->isArchived;
+    }
+
+    public function setIsArchived(bool $isArchived): self
+    {
+        $this->isArchived = $isArchived;
+
+        return $this;
+    }
+
+
 
 }

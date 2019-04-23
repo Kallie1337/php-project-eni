@@ -32,10 +32,10 @@ interface ObjectRepository
      * an UnexpectedValueException if certain values of the sorting or limiting details are
      * not supported.
      *
-     * @param mixed[]       $criteria
+     * @param mixed[] $criteria
      * @param string[]|null $orderBy
-     * @param int|null      $limit
-     * @param int|null      $offset
+     * @param int|null $limit
+     * @param int|null $offset
      *
      * @return object[] The objects.
      *
@@ -58,4 +58,5 @@ interface ObjectRepository
      * @return string
      */
     public function getClassName();
+
 }

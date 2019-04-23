@@ -1,3 +1,43 @@
+body {
+ 
+}
+.navbar   {
+    background-color: #011627!important;
+    border-bottom: solid 2px #ababab;
+}
+
+nav a > i,span {
+    color:white;
+    transition: color .25s;
+}
+
+nav a:hover > i {
+    color: #ff9f1c;
+}
+
+form {
+    border: none;
+    background-color: #1dfdf5;
+}
+
+.card {
+    border: 2px solid #ababab;
+}
+
+.card-body {
+    background-color: #ebf6ff;
+}
+
+.card-body span,i {
+    color: #495057;
+}
+
+
+
+.card-footer {
+    background-color: #b3c3d0;
+}
+
 #div_top_login{
     padding-top: 20%;
 }
@@ -29,12 +69,116 @@
     justify-content: space-between;
 
 }
+.trip-card > .card-footer> .right> a{
+
+    margin: 0 4px 0 4px;
+
+}
+
+
+.card-footer  a > i {
+    color: #445563;
+}
+
+.card-footer  a:hover>  i {
+    color: #a95454!important;
+}
 
 .error{
     color:red;
 }
 
+#card-caption {
+    justify-content: center;
+    align-items: center;
+}
 
+#card-caption > img {
+    position: relative;
+}
+
+#card-caption > .heading {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#card-caption > .heading > .heading-title{
+    font-size: -webkit-xxx-large;
+    font-weight: normal;
+    text-shadow: #000 0px 0 10px;
+    color: #e5e5e5;
+}
+
+#card-caption > .heading > .heading-subtitle{
+    font-size: large;
+    font-weight: normal;
+    text-shadow: #000 0px 0 10px;
+    color: #e5e5e5;
+}
+
+#card-author-info i {
+    margin-top: 4px;
+}
+
+#card-informations i {
+    margin-top: 4px;
+}
+#card-statusbar{
+    padding: 8px 16px 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+#trip_beginDateTime{
+    display: flex;
+    justify-content: space-between;
+}
+
+#trip_endDateTime{
+    display: flex;
+    justify-content: space-between;
+}
+#trip_registrationEndDate{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.list-group-item > .icon-field{
+
+    font-size: xx-large;
+
+}
+.bold{
+    font-weight: bold;
+}
+#div_others{
+    border-style: solid;
+    padding: 10%5%10%20%;
+}
+#participant{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+#participant> a{
+    margin: 4px;
+
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    flex: 1;
+}
+.list>li{
+    margin: 16px;
+
+}
 #trip_beginDateTime{
     display: flex;
     justify-content: space-between;

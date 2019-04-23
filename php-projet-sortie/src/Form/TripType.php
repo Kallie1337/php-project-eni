@@ -19,11 +19,15 @@ class TripType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('hang')
             ->add('beginDateTime')
             ->add('endDateTime')
             ->add('registrationEndDate')
             ->add('maxRegistration')
-            ->add('infos', TextareaType::class);
+            ->add('infos', TextareaType::class)
+            ->add('weather', TextareaType::class)
+            ->add('timezone', TextareaType::class)
+            ->add('administration', TextareaType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
