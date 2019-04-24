@@ -2,7 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Location;
 use App\Entity\Trip;
+use App\Entity\User;
+use App\Form\LocationType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,33 +22,53 @@ class TripRepository extends ServiceEntityRepository
         parent::__construct($registry, Trip::class);
     }
 
-        // /**
-        //  * @return Trip[] Returns an array of Trip objects
-        //  */
-        /*
-        public function findByExampleField($value)
-        {
-            return $this->createQueryBuilder('t')
-                ->andWhere('t.exampleField = :val')
-                ->setParameter('val', $value)
-                ->orderBy('t.id', 'ASC')
-                ->setMaxResults(10)
-                ->getQuery()
-                ->getResult()
-            ;
-        }
-        */
+    /**
+     * @param string|null $champ
+     * @param string|null $date_begin
+     * @param Location|null $location
+     * @return mixed
+     */
+    public function recherche(?string $champ, ?string $date_begin, ?Location $location)
+    {
+        $query = $this->createQueryBuilder('t')
+            ->where('t.name LIKE :champ')
+            ->andWhere('t.beginDateTime LIKE :date_begin')
+            ->setParameter('champ', "%" . $champ . "%")
+            ->setParameter('date_begin', "%" . $date_begin . "%");
 
-        /*
-        public function findOneBySomeField($value): ?Trip
-        {
-            return $this->createQueryBuilder('t')
-                ->andWhere('t.exampleField = :val')
-                ->setParameter('val', $value)
-                ->getQuery()
-                ->getOneOrNullResult()
-            ;
-        }
-        */
+        return $query->getQuery()->getResult();
+
+    }
+
+
+
+    // /**
+    //  * @return Trip[] Returns an array of Trip objects
+    //  */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
+
+    /*
+    public function findOneBySomeField($value): ?Trip
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
 
 }

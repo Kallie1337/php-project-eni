@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Location;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,9 +20,20 @@ class LocationRepository extends ServiceEntityRepository
         parent::__construct($registry, Location::class);
     }
 
-    // /**
-    //  * @return Location[] Returns an array of Location objects
-    //  */
+
+    public function rechercheVille(?string $choix, ?Location $id)
+    {
+        $query = $this->createQueryBuilder('l')
+            ->where('l.name LIKE :id')
+            ->setParameter('location', "%" . $choix . "%");
+
+        return $query->getQuery()->getResult();
+
+    }
+
+// /**
+//  * @return Location[] Returns an array of Location objects
+//  */
     /*
     public function findByExampleField($value)
     {

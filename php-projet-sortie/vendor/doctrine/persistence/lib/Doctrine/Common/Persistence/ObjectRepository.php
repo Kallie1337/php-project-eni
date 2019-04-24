@@ -59,4 +59,7 @@ interface ObjectRepository
      */
     public function getClassName();
 
+
+
+
 }
