@@ -95,22 +95,21 @@ class AccountController extends Controller
      */
     public function forgetPassword(UserPasswordEncoderInterface $passwordEncoder,Request $request,EntityManagerInterface $entityManager)
     {
-        $user = new User();
 
-        $form = $this->createForm(PasswordFormType::class, $user);
+        $form = $this->createForm(PasswordFormType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $email = $user->getEmail();
+            $email = $form->get('email')->getData();
             $check = $form->get('password')->getData();
             $u = $entityManager
                 ->getRepository(User::class)
                 ->findOneBy(['email' => $email]);
             if($u != null && $check == 1234)
             {
-                $user->setPassword(
+                $u->setPassword(
                     $passwordEncoder->encodePassword(
-                        $user,
+                        $u,
                         $form->get('plainPassword')->getData()
                     ));
                 $entityManager->flush();
@@ -120,6 +119,56 @@ class AccountController extends Controller
 
         return $this->render('account/forgetPassword.html.twig',
             ['passwordForm' => $form->createView()]);
+    }
+
+
+    /**
+     * @param \Swift_Mailer $mailer
+     * @return Response
+     * @Route("/test", name="test")
+     */
+
+    public function indexAction()
+    {
+        require_once '/path/to/vendor/autoload.php';
+        // Create the Transport
+        $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465))
+            ->setUsername('sortieprojet@gmail.com')
+            ->setPassword('Azertyuiop$');
+
+// Create the Mailer using your created Transport
+        $mailer = new Swift_Mailer($transport);
+
+
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('sortieprojet@gmail.com')
+            ->setTo('thomas.lebricquir@hotmail.com')
+            ->setBody(
+                $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                    'account/email.html.twig'
+                ),
+                'text/html'
+            )
+            /*
+             * If you also want to include a plaintext version of the message
+            ->addPart(
+                $this->renderView(
+                    'Emails/registration.txt.twig',
+                    array('name' => $name)
+                ),
+                'text/plain'
+            )
+            */
+        ;
+
+
+        // or, you can also fetch the mailer service this way
+        // $this->get('mailer')->send($message);
+
+        $mailer->send($message);
+
+        return $this->render("account/index.html.twig");
     }
 
 }
