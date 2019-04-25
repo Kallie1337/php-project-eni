@@ -14,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Swift_Mailer;
+use Swift_SmtpTransport;
 
 /**
  * @Route("/account")
@@ -130,7 +132,6 @@ class AccountController extends Controller
 
     public function indexAction()
     {
-        require_once '/path/to/vendor/autoload.php';
         // Create the Transport
         $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465))
             ->setUsername('sortieprojet@gmail.com')
@@ -150,16 +151,6 @@ class AccountController extends Controller
                 ),
                 'text/html'
             )
-            /*
-             * If you also want to include a plaintext version of the message
-            ->addPart(
-                $this->renderView(
-                    'Emails/registration.txt.twig',
-                    array('name' => $name)
-                ),
-                'text/plain'
-            )
-            */
         ;
 
 
