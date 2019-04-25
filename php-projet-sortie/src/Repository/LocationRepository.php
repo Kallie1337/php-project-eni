@@ -21,15 +21,6 @@ class LocationRepository extends ServiceEntityRepository
     }
 
 
-    public function rechercheVille(?string $choix, ?Location $id)
-    {
-        $query = $this->createQueryBuilder('l')
-            ->where('l.name LIKE :id')
-            ->setParameter('location', "%" . $choix . "%");
-
-        return $query->getQuery()->getResult();
-
-    }
 
 // /**
 //  * @return Location[] Returns an array of Location objects

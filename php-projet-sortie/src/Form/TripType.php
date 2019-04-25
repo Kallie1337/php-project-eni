@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Trip;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -28,6 +29,7 @@ class TripType extends AbstractType
             ->add('weather', TextareaType::class)
             ->add('timezone', TextareaType::class)
             ->add('administration', TextareaType::class);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

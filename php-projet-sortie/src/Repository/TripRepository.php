@@ -25,21 +25,23 @@ class TripRepository extends ServiceEntityRepository
     /**
      * @param string|null $champ
      * @param string|null $date_begin
-     * @param Location|null $location
+     * @param int|null $location_id
      * @return mixed
      */
-    public function recherche(?string $champ, ?string $date_begin, ?Location $location)
+    public function recherche(?string $champ, ?string $date_begin, ?string $location_id)
     {
         $query = $this->createQueryBuilder('t')
             ->where('t.name LIKE :champ')
             ->andWhere('t.beginDateTime LIKE :date_begin')
+            ->andWhere('t.location_id = decision')
             ->setParameter('champ', "%" . $champ . "%")
-            ->setParameter('date_begin', "%" . $date_begin . "%");
+            ->setParameter('date_begin', "%" . $date_begin . "%")
+            ->setParameter('decision', "%" . $location_id . "%");
+
 
         return $query->getQuery()->getResult();
 
     }
-
 
 
     // /**

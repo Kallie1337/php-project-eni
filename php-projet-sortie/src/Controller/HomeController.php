@@ -32,49 +32,26 @@ class HomeController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function lister(Request $request, TripRepository $tripRepository, LocationRepository $locationRepository): Response
+    public function lister(Request $request, TripRepository $tripRepository, LocationRepository $locationRepository ): Response
     {
 
-        $filter = $request->get('filter', 'all');
+        // $filter = $request->get('filter', 'all');
         $locations = $locationRepository->findAll();
+
 
         $champ = $request->get('champ');
         $date_begin = $request->get('date-begin');
+        $location_id=$request->get('decision');
 
-        $trips = $tripRepository->recherche($champ, $date_begin, ($filter === "all") ? null : $this->getUser());
-
+        $trips = $tripRepository->recherche($champ, $date_begin, $location_id);
 
 
         return $this->render('trip/lister.html.twig', [
             'trips' => $trips,
             'locations' => $locations,
+            'decision' => $location_id,
 
         ]);
     }
 
-    /**
-     * @Route("/listerVille", name="listerVille")
-     * @param Request $request
-     * @param TripRepository $tripRepository
-     * @param LocationRepository $locationRepository
-     * @return Response
-     */
-    public function listerVille(Request $request, TripRepository $tripRepository, LocationRepository $locationRepository): Response
-    {
-
-        $filter = $request->get('filter', 'all');
-        $choix = $request->request->get('location');
-        $date_begin = $request->get('date-begin');
-        $champ = $request->get('champ');
-
-        $trips = $tripRepository->recherche($champ, $date_begin, ($filter === "all") ? null : $this->getUser());
-        $locations = $locationRepository->rechercheVille($choix, ($filter === "all") ? null : $this->getUser());
-
-
-        return $this->render('trip/listerVille.html.twig', [
-            'trips' => $trips,
-            'locations' => $locations,
-
-        ]);
-    }
 }

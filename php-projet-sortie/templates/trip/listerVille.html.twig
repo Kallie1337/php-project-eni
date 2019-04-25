@@ -1,4 +1,4 @@
-{{ form_start }}
+{{ form_start ('form', {'action' : path('listerVille'), 'method' : 'GET'}) }}
 {{ form_widget  }}
 <button type="submit" value="Ville">Ville</button>
-{{ form_end }
+{{ form_end }}
