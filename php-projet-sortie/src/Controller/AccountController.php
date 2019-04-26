@@ -7,6 +7,7 @@ use App\Form\RegistrationFormType;
 use App\Form\PasswordFormType;
 use App\Security\Authenticator;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,6 +47,7 @@ class AccountController extends Controller
     }
 
     /**
+     * @IsGranted("[ROLE_ADMIN]")
      * @Route("/register", name="register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, Authenticator $authenticator): Response
