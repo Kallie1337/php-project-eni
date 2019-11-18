@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0456adbc936b3b1f7df1015882dc5fb",
+    "content-hash": "9337e450294a866d6942dbfcd3950d13",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2709,16 +2709,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v3.4.23",
+            "version": "v3.4.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "c3dd7b7ea8cd8ec12304a5e222d7dc01cac8fa11"
+                "reference": "0ea4d39ca82409a25a43b61ce828048a90000920"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/c3dd7b7ea8cd8ec12304a5e222d7dc01cac8fa11",
-                "reference": "c3dd7b7ea8cd8ec12304a5e222d7dc01cac8fa11",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/0ea4d39ca82409a25a43b61ce828048a90000920",
+                "reference": "0ea4d39ca82409a25a43b61ce828048a90000920",
                 "shasum": ""
             },
             "require": {
@@ -2776,7 +2776,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2019-02-23T15:06:07+00:00"
+            "time": "2019-11-08T16:18:30+00:00"
         },
         {
             "name": "symfony/doctrine-bridge",
@@ -4053,7 +4053,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -5597,6 +5597,7 @@
                 "MIT"
             ],
             "description": "A pack for Symfony Encore",
+            "abandoned": "symfony/webpack-encore-bundle",
             "time": "2018-07-16T10:15:28+00:00"
         },
         {
@@ -6131,7 +6132,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0.8",
+        "php": "^7.3.1",
         "ext-iconv": "*"
     },
     "platform-dev": []
